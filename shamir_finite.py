@@ -3,7 +3,7 @@ import sys
 from argparse import ArgumentParser
 
 # max value of X
-MAX_X = 1007
+MAX_X = 1009
 
 # Need exactly N keys out of K keys to get the secret S back
 N, K, S = 4, 7, 29
@@ -60,9 +60,9 @@ def get_secret(keys, N):
 			if j != i:
 				_num = (_num * X[j]) % MAX_X
 				_den = _den * inv((X[j] - X[i]))
-		S += (Y[i] * _num  * _den) % MAX_X
+		S = (S + Y[i] * _num  * _den) % MAX_X
 
-	return S 
+	return S
 
 if __name__ == '__main__':
 	p = ArgumentParser(description="Demonstrate Shamir Secret Sharing")
